@@ -8,34 +8,35 @@ namespace productManagement_system_project
     public class Usuario
     {
         //propriedades
-        public int Codigo;
-        public string Nome;
-        public string Email;
-        public string Senha;
-        public DateTime DataCadastro;
-        public List<Usuario> novoUsuario = new List<Usuario>();
+        public int Codigo { get; set; }
+        public string Nome { get; set; }
+        public string Email { get; set; }
+        public string Senha { get; set; }
+        public DateTime DataCadastro { get; set; }
 
         //construtor
-        public Usuario(int codigo, string nome, string email, string senha)
+        public Usuario()
         {
-            Codigo = codigo;
-            Nome = nome;
-            Email = email;
-            Senha = senha;
-            DataCadastro = DateTime.Now;
+            Cadastrar();
         }
 
         //métodos
-        public string Cadastrar(Usuario usuario)
+        public void Cadastrar()
         {
-            novoUsuario.Add(usuario);
-            return "Usuário cadastro com sucesso!";
+            Console.WriteLine($"Bem vindo ao sistema de gerenciamento de produtos! Vamos iniciar nossas operações cadastrando o usuário.");
+            Console.Write($"Insira seu nome:");
+            this.Nome = Console.ReadLine();
+            Console.Write($"Insira seu e-mail:");
+            this.Email = Console.ReadLine();
+            Console.Write($"Insira sua senha:");
+            this.Senha = Console.ReadLine();
+            Console.WriteLine();
         }
 
-        public string Deletar(Usuario usuario)
+        public void Deletar()
         {
-            novoUsuario.Remove(usuario);
-            return "Usuário deletado!";
+            
         }
     }
 }
+

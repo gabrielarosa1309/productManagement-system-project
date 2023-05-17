@@ -8,56 +8,106 @@ namespace productManagement_system_project
     public class Login
     {
         //propriedades
-        public bool logado;
+        public bool Logado;
 
         //construtor
         public Login()
         {
-
+            Usuario user = new Usuario();
+            Logar(user);
+            if (Logado)
+            {
+                Menu();
+            }
         }
 
         //métodos
-        char Menu()
-        {
-            Console.WriteLine($"---------------------------------------------");
-            Console.WriteLine($"¦          Gerenciador de Produtos          ¦");
-            Console.WriteLine($"---------------------------------------------");
-            Console.WriteLine();
-
-            Console.WriteLine(@$"
-            Escolha uma operação:
-            1 - Cadastrar marca
-            2 - Listar marca 
-            3 - Remover marca
-            4 - Cadastrar produto
-            5 - Listar produto
-            6 - Remover produto
-            7 - Sair
-            ");
-
-            return char.Parse(Console.ReadLine());
-            
-            char resposta = '0';
-
-            do
-            {
-            
-            } while (true);
-        }
-
-        public string Logar()
+        public void Logar(Usuario usuario)
         {
             Console.Write($"Insira seu email:");
             string email = Console.ReadLine();
             Console.Write($"Insira sua senha:");
             string senha = Console.ReadLine();
 
-            return "Você foi logado!";
+            if (email == usuario.Email && senha == usuario.Senha)
+            {
+                this.Logado = true;
+                Console.WriteLine($"Login efetuado com sucesso!");
+            }
+            else
+            {
+                this.Logado = false;
+                Console.WriteLine($"Usuário ou senha incorretos, tente novamente!");
+            }
         }
 
-        public string Deslogar()
+        public void Deslogar()
         {
-            return "Você foi deslogado!";
+
+        }
+
+        public void Menu()
+        {
+            string opcao = Console.ReadLine();
+            
+            do
+            {
+                Console.WriteLine($"---------------------------------------------");
+                Console.WriteLine($"¦          Gerenciador de Produtos          ¦");
+                Console.WriteLine($"---------------------------------------------");
+                Console.WriteLine();
+
+                Console.WriteLine(@$"
+                Escolha uma operação:
+
+                1 - Cadastrar marca
+                2 - Listar marcas 
+                3 - Remover marca
+                ---------------------
+                4 - Cadastrar produto
+                5 - Listar produtos
+                6 - Remover produto
+
+                7 - Sair
+                ");
+
+                string opcaoM = Console.ReadLine();
+
+                switch (opcaoM)
+                {
+                    case "1":
+                        Marca.Cadastrar();
+                        break;
+
+                    case "2":
+                        Marca.Listar();
+                        break;
+
+                    case "3":
+                        Console.Write($"Insira o código da marca que deseja deletar:");
+                        int codigoMarca = int.Parse(Console.ReadLine());
+                        Marca.Deletar(codigoMarca);
+                        break;
+
+                    case "4":
+                        Produto.Cadastrar();
+                        break;
+
+                    case "5":
+                        Produto.Listar();
+                        break;
+
+                    case "6":
+                        Console.Write($"Insira o código do produto que deseja deletar:");
+                        int codigoProduto = int.Parse(Console.ReadLine());
+                        break;
+
+                    case "7":
+                        Console.WriteLine($"Obrigada por usar o programa!");
+                        break;
+                }
+
+            } while (opcao != "7");
         }
     }
 }

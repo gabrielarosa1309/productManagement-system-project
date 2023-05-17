@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "productManagement-system-project/1.0.0": {
+        "runtime": {
+          "productManagement-system-project.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "productManagement-system-project/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

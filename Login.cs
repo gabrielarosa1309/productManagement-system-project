@@ -32,18 +32,17 @@ namespace productManagement_system_project
             if (email == usuario.Email && senha == usuario.Senha)
             {
                 this.Logado = true;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Login efetuado com sucesso!");
+                Console.ResetColor();
             }
             else
             {
                 this.Logado = false;
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Usuário ou senha incorretos, tente novamente!");
+                Console.ResetColor();
             }
-        }
-
-        public void Deslogar()
-        {
-
         }
 
         public void Menu()
@@ -100,6 +99,7 @@ namespace productManagement_system_project
                     case "6":
                         Console.Write($"Insira o código do produto que deseja deletar:");
                         int codigoProduto = int.Parse(Console.ReadLine());
+                        Produto.Deletar(codigoProduto);
                         break;
 
                     case "7":

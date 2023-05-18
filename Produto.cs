@@ -36,22 +36,40 @@ namespace productManagement_system_project
             Console.Write($"Insira um preço:");
             float preco = float.Parse(Console.ReadLine());
             Console.Write($"Insira o código da marca:");
-            Marca marcaEncontrada = Marca.marca.Find(item => item.Codigo == codigo);
+            int codigoMarca = int.Parse(Console.ReadLine());
+            Marca marcaEncontrada = Marca.marca.Find(item => item.Codigo == codigoMarca);
             
             produto.Add(
                 new Produto(codigo, nomeProduto, preco, marcaEncontrada)
             );
 
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Produto cadastrado com sucesso!");
+            Console.ResetColor();
         }
         public static void Listar()
         {
-
+            Console.WriteLine($"Lista de produtos:");
+            Console.WriteLine();
+            foreach (var item in produto)
+            {
+                Console.WriteLine(@$"
+                Código: {item.Codigo} 
+                Nome: {item.NomeProduto}
+                Preco: {item.Preco}
+                Marca: {item.Marca.NomeMarca}");
+            }
         }
-        public static void Deletar()
+        public static void Deletar(int codigoProduto)
         {
-            
+            Produto produtoEncontrado = produto.Find(item => item.Codigo == codigoProduto);
+            int index = produto.IndexOf(produtoEncontrado);
+            produto.RemoveAt(index);
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Produto deletado!");
+            Console.ResetColor();
         }
     }
 }

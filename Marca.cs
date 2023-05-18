@@ -34,7 +34,9 @@ namespace productManagement_system_project
             );
 
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Marca cadastrada com sucesso!");
+            Console.ResetColor();
         }
 
         public static void Listar()
@@ -43,7 +45,9 @@ namespace productManagement_system_project
             Console.WriteLine();
             foreach (var item in marca)
             {
-                Console.WriteLine($"Código: {item.Codigo}, Nome: {item.NomeMarca}");
+                Console.WriteLine(@$"
+                Código: {item.Codigo} 
+                Nome: {item.NomeMarca}");
             }
         }
 
@@ -53,7 +57,9 @@ namespace productManagement_system_project
             int index = marca.IndexOf(marcaEncontrada);
             marca.RemoveAt(index);
 
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Marca deletada!");
+            Console.ResetColor();
         }
     }
 }

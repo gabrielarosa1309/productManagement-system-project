@@ -70,9 +70,9 @@ namespace productManagement_system_project
                 7 - Sair
                 ");
 
-                string opcaoM = Console.ReadLine();
+                opcao = Console.ReadLine();
 
-                switch (opcaoM)
+                switch (opcao)
                 {
                     case "1":
                         Marca.Cadastrar();

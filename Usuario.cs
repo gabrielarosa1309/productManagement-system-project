@@ -32,11 +32,6 @@ namespace productManagement_system_project
             this.Senha = Console.ReadLine();
             Console.WriteLine();
         }
-
-        public void Deletar()
-        {
-            
-        }
     }
 }
 

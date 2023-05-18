@@ -57,7 +57,7 @@ namespace productManagement_system_project
                 Console.WriteLine(@$"
                 Código: {item.Codigo} 
                 Nome: {item.NomeProduto}
-                Preco: {item.Preco}
+                Preco: {item.Preco:C}
                 Marca: {item.Marca.NomeMarca}");
             }
         }
